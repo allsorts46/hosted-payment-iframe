@@ -50,4 +50,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.idea/modules.xml
 
+node_modules/
