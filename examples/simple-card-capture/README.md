@@ -1,9 +1,9 @@
 # Instructions
 
-1. Run application from /payments.js/examples/simple-card-capture folder with <your-tract-domain> as parameter
-    * node app.js foo.tractbilling.com
+1. Navigate to /hosted-payment-iframe/examples/simple-card-capture folder. Use <your-tract-domain> as parameter in the following command.
+    * Run node app.js foo.tractbilling.com
     
-2. Retrieve a referrer token from the TRACT API        
+2. Retrieve a referrer token from the TRACT API. (See top level README.md file for more informaiton.)        
 
 3. Navigate to test page
     * http://localhost:1111/index.html?t=d88f9360-e192-412e-8892-9f5adb24e844
