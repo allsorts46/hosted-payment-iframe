@@ -71,8 +71,8 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-4">
-			<label for="email">Email</label>
-			<input class="form-control" id="email" name="email_address" type="email"/>
+			<label for="emailAddress">Email</label>
+			<input class="form-control" id="emailAddress" name="emailAddress" type="email"/>
 		</div>
 	</div>
 	<hr class="divider"/>
@@ -107,10 +107,10 @@
 		<div class="col-xs-1">
 			<label for="cardType">Card Type</label>
 			<select class="form-control" id="cardType" name="cardType">
-				<option>Visa</option>
-				<option>Mastercard</option>
-				<option>American Express</option>
-				<option>Discover</option>
+				<option>VISA</option>
+				<option>MASTERCARD</option>
+				<option>AMEX</option>
+				<option>DISCOVER</option>
 			</select>
 		</div>
 	</div>
@@ -132,8 +132,7 @@
 					document.getElementById("frame").src = $("#server").val() + "?referrerToken=" + encodeURIComponent($("#token").val()) + "&cardType=" + encodeURIComponent($("#cardType").val()) + "&emailAddress=" + encodeURIComponent($("#emailAddress").val())
 						+ "&cardholderFirstName="+ encodeURIComponent($("#cardholderFirstName").val())  + "&cardholderMiddleName="+ encodeURIComponent($("#cardholderMiddleName").val())  + "&cardholderLastName="+ encodeURIComponent($("#cardholderLastName").val())  + "&cardholderSuffix="+ encodeURIComponent($("#cardholderSuffix").val())
 						+ "&addressCountryCode=" + encodeURIComponent($("#addressCountryCode").val()) + "&addressLine1=" + encodeURIComponent($("#addressLine1").val()) + "&addressline2=" + encodeURIComponent($("#addressLine2").val())
-						+ "&addressCity=" + encodeURIComponent($("#addressCity").val()) + "&addressRegionOrState=" + encodeURIComponent($("#addressRegionOrState").val()) + "&addressPostalCode=" + encodeURIComponent($("#addressPostalCode").val())
-						+ "&phoneCountryCode=" + encodeURIComponent($("#phoneCountryCode").val()) + "&phoneNationalDestinationCode=" + encodeURIComponent($("#phoneNationalDestinationCode").val()) + "&phoneSubscriberNumber=" + encodeURIComponent($("#phoneSubscriberNumber").val()) + "&phoneExtension=" + encodeURIComponent($("#phoneExtension").val());
+						+ "&addressCity=" + encodeURIComponent($("#addressCity").val()) + "&addressRegionOrState=" + encodeURIComponent($("#addressRegionOrState").val()) + "&addressPostalCode=" + encodeURIComponent($("#addressPostalCode").val());
 					console.log("adding receive message handler");
 
 					var url = $("#server").val();

@@ -18,13 +18,20 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="../../bootstrap/bootstrap.min.js"></script>
 
+	<script type="text/javascript">
+        $(document).ready(function() {
+            var sPageURL = window.location.search.substring(1);
+            $('#return-token').text(sPageURL);
+        });
+	</script>
+
 </head>
 
 <body>
 	<div class="alert alert-success" role="alert">
 		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 		<span class="sr-only">Success:</span>
-		Thanks! You successfully submitted your payment method.
+		Thanks! You successfully submitted your payment method.  Your token is <span id="return-token"></span>.  You can now use this referrer token to add the payment method to the billing account.
 	</div>
 </body>
 
