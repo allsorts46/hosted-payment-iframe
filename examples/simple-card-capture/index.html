@@ -1,123 +1,156 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<script type="text/javascript">
-        window.tpu = '__TRACT_PAYMENTS_URL__';
-	</script>
-	<meta charset="UTF-8">
-	<title>Payment IFrame Test</title>
+<!DOCTYPE html>
+<html lang="en">
+<link>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="bootstrap/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="app.css"></link>
 
 	<!-- jQuery library -->
 	<script src="jquery/jquery-1.11.3.min.js"></script>
 
-	<script type="text/javascript" src="postmessage.js"></script>
+
+	<script type="text/javascript" src="https://__TRACT_URL__/t/w/resources/com.transverse.bleep.wicket.paymentinformation.CollectPaymentInformationPage/jquery.ba-postmessage.js"></script>
 
 	<script type="text/javascript">
+        window.tpu = '__TRACT_URL__';
+        function GetURLParameter(sParam) {
+
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] == sParam)
+
+                {
+                    return sParameterName[1];
+                }
+            }
+        }
+
         function submitPayment() {
             var src = document.getElementById("frame").src + "#" + encodeURIComponent(document.location.href);
             $.postMessage("submit", src, document.getElementById("frame").contentWindow);
         }
-	</script>
-</head>
-<body>
 
-<table cellPadding="2" cellSpacing="2">
-	<tr>
-		<td>
-			<span style="width:20px;">Server:</span><input id="server" style="width: 350px;padding-left:5px;padding-left=5px;" value="https://my.tractbilling.com/t/w/hostedpayment"/>
-		</td>
-		<td>
-			<span style="width:20px;">Referrer Token:</span><input id="token" style="width: 250px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span style="width:20px;">Credit Card Type:</span><input id="cardType" style="width: 50px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<span style="width:20px;">First:</span><input id="cardholderFirstName" style="width: 150px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Middle:</span><input id="cardholderMiddleName" style="width: 100px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Last:</span><input id="cardholderLastName" style="width: 200px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Suffix:</span><input id="cardholderSuffix" style="width: 50px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span style="width:20px;">Email Address:</span><input id="emailAddress" style="width: 250px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span style="width:20px;">Country Code:</span><input id="addressCountryCode" style="width: 250px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span style="width:20px;">Address Line1:</span><input id="addressLine1" style="width: 250px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<span style="width:20px;">Address Line2:</span><input id="addressLine2" style="width: 250px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<span style="width:20px;">City:</span><input id="addressCity" style="width: 250px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Region or State:</span><input id="addressRegionOrState" style="width: 200px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Postal Code:</span><input id="addressPostalCode" style="width: 150px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<span style="width:20px;">Country Code:</span><input id="phoneCountryCode" style="width: 50px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">National Destination Code:</span><input id="phoneNationalDestinationCode" style="width: 100px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Subscriber Number:</span><input id="phoneSubscriberNumber" style="width: 100px;padding-left:5px;padding-left=5px;"/>
-			<span style="width:20px;">Extension:</span><input id="phoneExtension" style="width: 50px;padding-left:5px;padding-left=5px;"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<button id="openFrame">Open IFrame</button>
-		</td>
-	</tr>
-</table>
-
-<div style="padding-top:8px">Do not click on the Cancel and Next buttons in the IFrame.</div>
-<div style="color:red" id="results"></div>
-<form id="form">
-	<button id="btnSubmit" onclick="submitPayment(); return false;" style="width:100px;height:50px;">Submit Payment</button><br />
-	<script type="text/javascript">
-        $("#openFrame").click(function () {
-            if (! $("#frame").length) {
-                $("<iframe />").attr("width", "1080").attr("height", "980").attr("id","frame").attr("name","hppFrame").appendTo("form");
-            }
-            var op = "&o=";
-            document.getElementById("frame").src = $("#server").val() + "?referrerToken=" + encodeURIComponent($("#token").val()) + "&cardType=" + encodeURIComponent($("#cardType").val()) + "&emailAddress=" + encodeURIComponent($("#emailAddress").val())
-                + "&cardholderFirstName="+ encodeURIComponent($("#cardholderFirstName").val())  + "&cardholderMiddleName="+ encodeURIComponent($("#cardholderMiddleName").val())  + "&cardholderLastName="+ encodeURIComponent($("#cardholderLastName").val())  + "&cardholderSuffix="+ encodeURIComponent($("#cardholderSuffix").val())
-                + "&addressCountryCode=" + encodeURIComponent($("#addressCountryCode").val()) + "&addressLine1=" + encodeURIComponent($("#addressLine1").val()) + "&addressline2=" + encodeURIComponent($("#addressLine2").val())
-                + "&addressCity=" + encodeURIComponent($("#addressCity").val()) + "&addressRegionOrState=" + encodeURIComponent($("#addressRegionOrState").val()) + "&addressPostalCode=" + encodeURIComponent($("#addressPostalCode").val())
-                + "&phoneCountryCode=" + encodeURIComponent($("#phoneCountryCode").val()) + "&phoneNationalDestinationCode=" + encodeURIComponent($("#phoneNationalDestinationCode").val()) + "&phoneSubscriberNumber=" + encodeURIComponent($("#phoneSubscriberNumber").val()) + "&phoneExtension=" + encodeURIComponent($("#phoneExtension").val())
-                + op + encodeURIComponent(window.location.href.replace( /([^:]+:\/\/[^\/]+).*/, '$1'));
-            console.log("adding receive message handler");
-
-            var url = $("#server").val();
-            if(url.indexOf('/t/')>-1){
-                url = url.substr(0,url.indexOf('/t/'));
-            }
-            if(url.indexOf('/tract/')>-1){
-                url = url.substr(0,url.indexOf('/tract/'));
-            }
-            console.log("Server url "+url);
-            $.receiveMessage( function(e){
-                $('#results').html("Validation "+e.data);
-            }, url );
+        $(document).ready(function(){
+            //add the reference token to the form
+            var token = GetURLParameter('t');
+            $('#payment_form').append('<input type="hidden" name="token" id="token" value="'+ token +'" />');
+            $('#payment_form').append('<input type="hidden" name="server" id="server" value="https://'+ window.tpu +'/t/w/hostedpayment" />');
 
         });
 
 	</script>
-</form>
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="container">
+	<h3>Gather data to inject into IFRAME</h3>
+	<hr class="divider"/>
+	<div class="row">
+		<div class="col-xs-2">
+			<label for="cardholderFirstName">First</label>
+			<input class="form-control" id="cardholderFirstName" name="cardholderFirstName" type="text"/>
+		</div>
+		<div class="col-xs-1">
+			<label for="cardholderMiddleName">Middle</label>
+			<input class="form-control" id="cardholderMiddleName" name="cardholderMiddleName" type="text"/>
+		</div>
+		<div class="col-xs-2">
+			<label for="cardholderLastName">Last</label>
+			<input class="form-control" id="cardholderLastName" name="cardholderLastName" type="text"/>
+		</div>
+		<div class="col-xs-1">
+			<label for="cardholderSuffix">Suffix</label>
+			<input class="form-control" id="cardholderSuffix" name="cardholderSuffix" type="text"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<label for="email">Email</label>
+			<input class="form-control" id="email" name="email_address" type="email"/>
+		</div>
+	</div>
+	<hr class="divider"/>
+	<div class="row">
+		<div class="col-xs-4">
+			<label for="addressLine1">Address</label>
+			<input class="form-control" id="addressLine1" name="addressLine1" type="text"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<label for="addressLine2"></label>
+			<input class="form-control" id="addressLine2" name="addressLine2" type="text"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2">
+			<label for="addressCity">City</label>
+			<input class="form-control" id="addressCity" name="addressCity" type="text"/>
+		</div>
+		<div class="col-xs-1">
+			<label for="addressRegionOrState">State</label>
+			<input class="form-control" id="addressRegionOrState" name="addressRegionOrState" type="text" maxlength="2"  minlength="2" placeholder="TX"/>
+			<input type="hidden" name="addressCountryCode" id="addressCountryCode" value="USA" />
+		</div>
+		<div class="col-xs-1">
+			<label for="addressPostalCode">Zip</label>
+			<input class="form-control" id="addressPostalCode" name="addressPostalCode" type="text"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-1">
+			<label for="cardType">Card Type</label>
+			<select class="form-control" id="cardType" name="cardType">
+				<option>Visa</option>
+				<option>Mastercard</option>
+				<option>American Express</option>
+				<option>Discover</option>
+			</select>
+		</div>
+	</div>
+	<hr class="divider"/>
+	<div class="row">
+		<div class="col-xs-offset-5 col-xs-7">
+			<button type="submit" class="btn btn-primary" name="openFrame" id="openFrame">Open IFrame</button>
+		</div>
+	</div>
+	<hr class="divider"/>
+	<div id="iframe-container">
+		<form id="payment_form">
+			<script type="text/javascript">
+				$("#openFrame").click(function () {
+					if (! $("#frame").length) {
+						$("<iframe />").attr("id","frame").attr("name","hppFrame").attr("class","payment-iframe-height").appendTo("form");
+					}
+					// var op = "&o=";
+					document.getElementById("frame").src = $("#server").val() + "?referrerToken=" + encodeURIComponent($("#token").val()) + "&cardType=" + encodeURIComponent($("#cardType").val()) + "&emailAddress=" + encodeURIComponent($("#emailAddress").val())
+						+ "&cardholderFirstName="+ encodeURIComponent($("#cardholderFirstName").val())  + "&cardholderMiddleName="+ encodeURIComponent($("#cardholderMiddleName").val())  + "&cardholderLastName="+ encodeURIComponent($("#cardholderLastName").val())  + "&cardholderSuffix="+ encodeURIComponent($("#cardholderSuffix").val())
+						+ "&addressCountryCode=" + encodeURIComponent($("#addressCountryCode").val()) + "&addressLine1=" + encodeURIComponent($("#addressLine1").val()) + "&addressline2=" + encodeURIComponent($("#addressLine2").val())
+						+ "&addressCity=" + encodeURIComponent($("#addressCity").val()) + "&addressRegionOrState=" + encodeURIComponent($("#addressRegionOrState").val()) + "&addressPostalCode=" + encodeURIComponent($("#addressPostalCode").val())
+						+ "&phoneCountryCode=" + encodeURIComponent($("#phoneCountryCode").val()) + "&phoneNationalDestinationCode=" + encodeURIComponent($("#phoneNationalDestinationCode").val()) + "&phoneSubscriberNumber=" + encodeURIComponent($("#phoneSubscriberNumber").val()) + "&phoneExtension=" + encodeURIComponent($("#phoneExtension").val());
+					console.log("adding receive message handler");
+
+					var url = $("#server").val();
+					if(url.indexOf('/t/')>-1){
+						url = url.substr(0,url.indexOf('/t/'));
+					}
+					if(url.indexOf('/tract/')>-1){
+						url = url.substr(0,url.indexOf('/tract/'));
+					}
+					console.log("Server url "+url);
+					$.receiveMessage( function(e){
+						$('#results').html("Validation "+e.data);
+					}, url );
+				});
+			</script>
+		</form>
+	</div>
+</div>
 </body>
 </html>

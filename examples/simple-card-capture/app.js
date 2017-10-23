@@ -10,10 +10,10 @@ if (fs.existsSync(__dirname+'/config.json')){
 } else {
 	opts = require('nomnom')
 	.options({
-		'tract-payments-url': {
+		'tract-url': {
 			position: 0,
 			required: true,
-			help: 'the tract payments url',
+			help: 'the tract url',
 		},
 		port: {
 			abbr: 'p',
@@ -30,7 +30,7 @@ if (fs.existsSync(__dirname+'/config.json')){
 }
 if (opts.save){
 	fs.writeFileSync(__dirname+'/config.json', JSON.stringify({
-		'tract-payments-url': opts['tract-payments-url'],
+		'tract-url': opts['tract-url'],
 		port: opts.port
 	}, undefined, 2))
 }
@@ -39,7 +39,7 @@ const app = express();
 
 const index = fs
     .readFileSync(path.join(__dirname, '.', '/index.html'), 'utf-8')
-    .replace(/__TRACT_PAYMENTS_URL__/g, opts['tract-payments-url']);
+    .replace(/__TRACT_URL__/g, opts['tract-url']);
 
 app.get('/', function (req, res) { res.send(index) });
 app.get('/index.html', function (req, res) { res.send(index) });

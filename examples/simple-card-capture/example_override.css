@@ -1,0 +1,296 @@
+/**
+This is an example file on how to override the CSS for the hosted payment page.  To override the CSS,
+ */
+
+#payment_form {
+   width: 50%;
+}
+
+.feedbackPanelERROR:nth-child(2) {
+    display: none;
+}
+.feedbackPanelERROR:nth-child(3) {
+    display: none;
+}
+.feedbackPanelERROR:nth-child(4) {
+    display: none;
+}
+
+/* clear every field onto a new line */
+ol.stacked li {
+    clear: both !important;
+}
+ol.stacked:nth-child(2) li:first-child {
+    padding-top: 0;
+}
+ol.stacked:last-child {
+    width: 90%;
+}
+/* card type */
+ol.stacked:nth-child(2) li {
+    width: 100%;
+}
+/* card number */
+ol.stacked:last-child li:first-child {
+    width: 100%;
+}
+/* cvv */
+ol.stacked:last-child li:nth-child(2) {
+    width: 100%;
+}
+/* expiration */
+ol.stacked:last-child li:last-child {
+    width: 100%;
+}
+
+@media screen and (max-width: 553px) and (min-width: 449px), screen and (max-device-width: 553px) and (min-device-width: 449px) {
+    #payment_form {
+        width: 54%;
+    }
+}
+
+@media screen and (max-width: 501px) and (min-width: 438px), screen and (max-device-width: 501px) and (min-device-width: 438px) {
+    #payment_form {
+        width: 42%;
+    }
+}
+
+@media screen and (max-width: 437px) and (min-width: 366px), screen and (max-device-width: 437px) and (min-device-width: 366px) {
+    #payment_form {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 365px) and (min-width: 260px), screen and (max-device-width: 365px) {
+    #payment_form {
+        width: 28%;
+    }
+}
+
+@media screen and (max-width: 259px) {
+    #payment_form {
+        width: 25%;
+    }
+}
+
+body {
+    background: none;
+}
+
+/**  remove address info **/
+
+#wrapper_wrapper {
+    background: none;
+}
+
+#wrapper {
+    margin: 0;
+    background: none;
+    width: 100%;
+    max-width: none;
+    min-width: none;
+}
+
+#header {
+    display: none;
+}
+
+#content {
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.tab_section_content {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+}
+
+.footer_content {
+    display: none;
+}
+
+.protected h2 {
+    display: none;
+}
+
+div[wicketpath="collectPaymentInformation_personalInfo"] {
+    display: none;
+}
+
+ol.stacked {
+    padding: 0 !important;
+    margin: 0 !important;
+    clear: none !important;
+}
+
+ol.stacked:first-child {
+    display: none;
+}
+
+ol.stacked li {
+    margin-right: 0;
+}
+
+#cardType {
+    border: 1px solid #e0e0e0;
+    outline: none;
+    margin: 0;
+    height: 34px;
+    width: 100px;
+    background-color: white;
+}
+
+#cardIdentifierNumber {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 4px;
+    height: 20px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-color: #cccccc;
+}
+
+#cardVerificationNumber {
+    border: 1px solid #e0e0e0;
+    width: 45px;
+    background: #fff;
+    border-radius: 4px;
+    height: 20px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-color: #cccccc;
+}
+
+#cardExpiration {
+    border: 1px solid #e0e0e0;
+    width: 95px;
+    background: #fff;
+    border-radius: 4px;
+    height: 20px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-color: #cccccc;
+}
+
+.feedbackPanel {
+    margin: 0;
+    padding: 0;
+}
+
+.required {
+    font-weight: normal;
+}
+
+.required:after {
+    content: "";
+}
+
+.right {
+    float: left;
+}
+
+html {
+    overflow: hidden;
+}
+
+#cardIdentifierNumber::-webkit-input-placeholder::before {
+    color:#666;
+    content:"Line 1\A Line 2\A Line 3\A";
+}
+
+.tab_section_footer {
+    padding-top: 25px;
+}
+
+#Next {
+    background: #FFFFFF !important;
+    border-color: #46b8da !important;
+    color: #46b8da !important;
+    text-transform: uppercase;
+    border-width: 2px;
+    border-radius: 2px !important;
+    width: 120px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-left: 10px;
+    line-height: 1.42857143;
+}
+
+#Next:hover {
+    color: #fff !important;
+    background-color: #5bc0de !important;
+    border: 1px solid #5bc0de !important;
+}
+
+input[name="cancel"] {
+    background: #FFFFFF !important;
+    border-color: #CCCCCC !important;
+    color: #333333 !important;
+    text-transform: uppercase;
+    border-width: 2px;
+    border-radius: 2px !important;
+    width: 120px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+input[name="cancel"]:hover {
+    border: 1px solid #adadad;
+    color: #373a3c;
+    background-color: #e6e6e6 !important;
+}
+
+span label {
+    position: absolute;
+}
+
+label[wicketpath="collectPaymentInformation_creditCardPaymentInfo_label10"]:before {
+    content: "Card "
+}
+
+label[wicketpath="collectPaymentInformation_creditCardPaymentInfo_label12"]:after {
+    content: " (mm/yyyy)"
+}
+
+label[for="cardIdentifierNumber"].error {
+    left: 100px;
+}
+
+label[for="cardExpiration"].error {
+    text-indent: -9999px;
+    line-height: 0;
+}
+
+label[for="cardExpiration"].error:after {
+    content: "Please enter a valid date";
+    text-indent: 0;
+    display: block;
+    line-height: initial;
+}
+
+.feedbackPanelERROR {
+    width: 500px;
+}
