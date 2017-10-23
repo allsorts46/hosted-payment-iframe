@@ -1,7 +1,7 @@
 # Instructions
 
 1. Navigate to /hosted-payment-iframe/examples/simple-card-capture folder. Use your-tract-domain as a parameter in the following command.
-    * Run `node app.js foo.tractbilling.com`
+    * Run `node app.js demo.tractbilling.com`
     
 2. Retrieve a referrer token from the TRACT API. (See top level README.md file for more information.)        
 
@@ -22,12 +22,14 @@ This received token can then be used to add this payment method to a billing acc
 # TENANT Configuration Options for HPP
 
 1. If you want to override the CSS, you must go to Admin -->  Company --> Branding --> Action (Configure Secure Payment Collection Branding)
-* Enable and upload your override CSS.  See example_override.css as and example.
+* Enable and upload your override CSS.  See example_override.css as an example.
 
 2. If you want CVV to show in page, set "Allow Payment CVV" to true in Admin --> Company --> System Settings
 
+3. If you want Cancel and Next buttons to display, you need to pass in valid values for cancel and success in the original referrer token generation.
 
-# Iframe Name/Value Pairs Reference
+
+# IFrame Name/Value Pairs Reference
 You can input the fields in the table below into the iframe as name/value pairs.
 
 | Field Name                      | Query Parameter Name         | Required | Description                                                                                                                                                                                                                           |
