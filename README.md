@@ -38,7 +38,7 @@ Using a tool like Postman, construct an HTTP post with the following information
 
 ```Content-Type: application/xml```
     
-   Where `<auth>` is the base64 encoded <your-username>:<your-password>
+   Where `<auth>` is the base64 encoded \<your-username\>:\<your-password\>
 
     
 ## Request Body
