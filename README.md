@@ -32,10 +32,39 @@ method which is then used to add a payment method to a billing account.
     
     
 # Getting a Referrer Token
+Using a tool like Postman, construct an HTTP post using either JSON REST API or XML REST API.
 
-Using a tool like Postman, construct an HTTP post with the following information:
+## JSON REST API Example
 
-```https://demo.tractbilling.com/t/s/r/1.33/payments/referrerToken```
+```POST https://demo.tractbilling.com/billing/2/payments/generate-token```
+
+### Request Headers
+
+```Authorization: No Auth``` 
+
+```X-api-key: Your provisioned API key```
+
+```Content-Type: application/json```
+
+### Request Body
+```
+{
+  "error_url": "https://gotransverse.com?error",
+  "cancel_url": "https://gotransverse.com?cancel",
+  "complete_url": "https://gotransverse.com?complete"
+}
+```
+
+### Response Body
+```
+{
+    "token": "9235d441-edf6-4a76-bcc3-48f2c3ab93cc"
+}
+```
+
+## XML REST API Example
+
+```POST https://demo.tractbilling.com/t/s/r/1.33/payments/referrerToken```
 
 
 ## Request Headers
