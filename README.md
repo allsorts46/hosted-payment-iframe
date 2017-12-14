@@ -25,7 +25,7 @@ method which is then used to add a payment method to a billing account.
     * goTransverse Customer Support will provide an api account for you TRACT tenant.    
     
     **NOTE:**  
-        _A customer defined and managed origin domain that will host the page is required.  goTransverse Customer Support will need to configure a hosted payment page endpoint with this origin domain.
+        A customer-defined and managed origin domain that will host the page is required.  goTransverse Customer Support will need to configure a hosted payment page endpoint with this origin domain.
         This is required so that an X-Frame-Options header can be properly enabled for this origin domain.
         A single origin domain can be used for multiple tenants within a single TRACT environment, however a different domain is required per environment (eg. dev.my-domain.com
         versus stage.my-domain.com versus prod.my-domain.com).
@@ -67,7 +67,7 @@ Using a tool like Postman, construct an HTTP post using either JSON REST API or 
 ```POST https://demo.tractbilling.com/t/s/r/1.33/payments/referrerToken```
 
 
-## Request Headers
+### Request Headers
 
 ```Authorization: Basic <auth>``` 
 
@@ -76,7 +76,7 @@ Using a tool like Postman, construct an HTTP post using either JSON REST API or 
    Where `<auth>` is the base64 encoded \<your-username\>:\<your-password\>
 
     
-## Request Body
+### Request Body
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <generatePaymentCollectionReferrerToken xmlns="http://www.tractbilling.com/billing/1_33/domain">
@@ -86,7 +86,7 @@ Using a tool like Postman, construct an HTTP post using either JSON REST API or 
 </generatePaymentCollectionReferrerToken>        
 ```
 
-## Response Body
+### Response Body
 ```        
 <?xml version="1.0" encoding="UTF-8"?>
 <referrer xmlns="http://www.tractbilling.com/billing/1_33/domain" referrerToken="d88f9360-e192-412e-8892-9f5adb24e844"/> 
